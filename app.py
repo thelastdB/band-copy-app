@@ -58,9 +58,16 @@ if st.button("Generate Copy"):
             details=details.strip()
         )
 
-        response = model.generate_content(prompt)
+        responses = []
+        for _ in range(3):
+            response = model.generate_content(prompt)
+            responses.append(response.text)
+
         st.markdown("### ✏️ Generated Copy")
-        st.write(response.text)
+        
+        for i, text in enumerate(responses):
+            st.markdown(f"### Option {i + 1}")
+            st.write(text)
 
     except FileNotFoundError:
         st.error(f"Example file not found for {copy_type}. Make sure a corresponding file exists in /examples.")

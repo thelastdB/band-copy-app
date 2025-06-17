@@ -7,7 +7,7 @@ Here are past show announcement examples:
 {examples}
 
 Now write a new {mood} show announcement. Make it conversational and engaging. Include key details:
-{details}. Avoid cliches. Nothing too on the nose about country music.
+{details}. Avoid cliches. Nothing too on the nose about country music. Keep it under 100 words.
 """,
         "instructions": "Who’s playing, where, when, and anything that sets the vibe or makes this show special?"
     },
@@ -20,7 +20,11 @@ Here are past promo examples:
 {examples}
 
 Write a {mood}, punchy and emotional post about the new release. Include the following info:
-{details}. Avoid cliches. Nothing too on the nose about country music.
+{details}.
+Avoid cliches. 
+Nothing too on the nose about country music. 
+Keep it under 300 words.
+Write with humor but avoid sarcasm.
 """,
         "instructions": "Song or album title, release date, how it was made, or what inspired it."
     },
@@ -33,7 +37,11 @@ Here are past email examples:
 {examples}
 
 Write a {mood}, direct blurb that includes:
-{details}. Avoid cliches. Nothing too on the nose about country music.
+{details}.
+Avoid cliches. 
+Nothing too on the nose about country music. 
+Keep it under 100 words.
+Write with humor but avoid sarcasm.
 """,
         "instructions": "Upcoming news, tour info, or personal updates you'd want fans to read in an email."
     },
@@ -46,7 +54,11 @@ Here are past post examples:
 {examples}
 
 Write a {mood}, direct post that includes:
-{details}. Avoid cliches. Nothing too on the nose about country music.
+{details}.
+Avoid cliches. 
+Nothing too on the nose about country music. 
+Keep it under 100 words.
+Write with humor but avoid sarcasm.
 """,
         "instructions": "What city the show was in, how it felt, and anything you want to thank fans for."
     },
@@ -59,7 +71,11 @@ Here are past post examples:
 {examples}
 
 Write a {mood}, direct post that includes:
-{details}. Avoid cliches. Nothing too on the nose about country music.
+{details}.
+Avoid cliches. 
+Nothing too on the nose about country music. 
+Keep it under 100 words.
+Write with humor but avoid sarcasm.
 """,
         "instructions": "What you practiced, any funny moments, how the songs are evolving, etc."
     },
@@ -72,7 +88,11 @@ Here are past post examples:
 {examples}
 
 Write a {mood}, direct post that includes:
-{details}. Avoid cliches. Nothing too on the nose about country music.
+{details}. 
+Avoid cliches. 
+Nothing too on the nose about country music. 
+Keep it under 100 words.
+Write with humor but avoid sarcasm.
 """,
         "instructions": "Studio or writing updates, what you're experimenting with, and how you're feeling about it."
     }
