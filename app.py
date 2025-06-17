@@ -3,6 +3,9 @@ from dotenv import load_dotenv
 import google.generativeai as genai
 import streamlit as st
 
+# load prompt templates
+from prompt_templates import prompt_templates
+
 load_dotenv()
 
 api_key = os.getenv("GEMINI_API_KEY")
@@ -28,25 +31,27 @@ st.title("Band Copy Generator")
 copy_type = st.selectbox("What do you need?", list(example_files.keys()))
 details = st.text_area("Details (date, location, vibe, etc.)")
 
+mood = st.selectbox(
+    "Choose a mood or tone",
+    ["Rebellious", "Rowdy", "Swaggering", "Earnest", "Hopeful", "Mellow", "Grateful"]
+)
+
 if st.button("Generate Copy"):
-    example_file = example_files[copy_type]
-    example_path = os.path.join("examples", example_file)
-    
-    # Safety check: file exists
-    if os.path.exists(example_path):
-        with open(example_path, "r") as f:
-            example_text = f.read()
-    else:
-        example_text = "(No example text found for this copy type.)"
-    prompt = f"""
-    You're writing in the voice of an indie alt-country band. Here's an example of our past copy:
+    try:
+        example_file_path = f"examples/{copy_type.lower().replace(' ', '_')}.txt"
+        with open(example_file_path) as f:
+            examples = f.read()
 
-    "{example_text}"
+        template = prompt_templates[copy_type]
+        prompt = template.format(
+            mood=mood.lower(),
+            examples=examples,
+            details=details.strip()
+        )
 
-    Now write a new {copy_type} based on the following details:
-    {details}
-    """
-    
-    response = model.generate_content(prompt)
-    st.markdown("### ✏️ Generated Copy")
-    st.write(response.text)
+        response = model.generate_content(prompt)
+        st.markdown("### ✏️ Generated Copy")
+        st.write(response.text)
+
+    except FileNotFoundError:
+        st.error(f"Example file not found for {copy_type}. Make sure a corresponding file exists in /examples.")
