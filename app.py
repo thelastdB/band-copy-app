@@ -26,23 +26,32 @@ example_files = {
 }
 
 # Streamlit UI
-st.title("Band Copy Generator")
+st.title("HSBA Copy Generator")
 
-copy_type = st.selectbox("What do you need?", list(example_files.keys()))
-details = st.text_area("Details (date, location, vibe, etc.)")
+copy_type = st.selectbox("What do you need?", list(prompt_templates.keys()))
 
+# Fetch input guidance for selected template
+input_instructions = prompt_templates[copy_type]["instructions"]
+
+# Show a mood selector
 mood = st.selectbox(
     "Choose a mood or tone",
     ["Rebellious", "Rowdy", "Swaggering", "Earnest", "Hopeful", "Mellow", "Grateful"]
 )
 
+# Show guidance for details
+st.caption(f"💡 What to include: {input_instructions}")
+details = st.text_area("Details")
+
+# Generate on button click
 if st.button("Generate Copy"):
     try:
         example_file_path = f"examples/{copy_type.lower().replace(' ', '_')}.txt"
         with open(example_file_path) as f:
             examples = f.read()
 
-        template = prompt_templates[copy_type]
+        # Get the actual template string
+        template = prompt_templates[copy_type]["template"]
         prompt = template.format(
             mood=mood.lower(),
             examples=examples,
